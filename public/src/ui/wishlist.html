@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Raider Movie Booking System</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Your CSS file -->
+</head>
+<body>
+    <body style="background-color: #2c2c2c; color: #f5f5f5;">
+    <!-- Logout button -->
+
+    <!-- Title of the site -->
+    <h1>🎬 Raider Movie Booking 🎟️</h1>
+    <!-- Welcome message shown after login -->
+    <h2 id="welcome-message" style="text-align: center;">Welcome back xxx!</h2>
+    <!-- Navigation bar with all the pages -->
+    <nav>
+      <a href="home.html">Home</a> |
+      <a href="admin.html">Admin</a> |
+      <a href="myBookings.html">My Bookings</a> |
+      <a href="wishlist.html">My Wishlist</a> |
+      <a href="login.html">Logout</a>
+    </nav>
+
+    <!-- Movie section title -->
+    <h2 style="text-align: center;">My Wishlist</h2>
+
+    <!-- Container where movies will be loaded using script.js -->
+    <div id="movie-list" class="movie-list">
+        <!-- Movie cards will appear here -->
+    </div>
+
+<!-- Modal Backdrop -->
+<div id="movie-modal" class="modal-overlay" style="display:none;">
+    <div class="modal-content movie-card" style="width: 600px; margin: 20px auto; padding: 16px; background-color: rgb(143, 143, 143); border-radius: 8px; position: relative;">
+  
+      <!-- Close button -->
+      <span class="close-button" id="close-button" style="position: absolute; top: 10px; right: 14px; cursor: pointer; font-size: 24px;">&times;</span>
+  
+      <!-- Layout: all content left, image right -->
+      <div style="display: flex; gap: 20px;">
+        
+        <!-- Left side: everything else -->
+        <div style="flex: 2;">
+          <h2 id="movie-title">Movie Title</h2>
+          <p id="movie-description">Movie Description</p>
+          <p><strong>Rating:</strong> <span id="movie-rating"></span></p>
+  
+          <h3>Reviews:</h3>
+          <div id="reviews-container"
+               class="reviews-box"
+               style="max-height: 150px; overflow-y: auto; border: 1px solid #ccc; padding: 8px; margin-bottom: 10px;">
+            <!-- Reviews go here -->
+          </div>
+
+          <button class="book-button" id="leave-review">Leave Review</button><br>
+          
+          <h3 id="premiere-date">Premiere date:</h3>
+          <button class="book-button" id="purchase-ticket">Purchase Ticket</button>
+        </div>
+  
+        <!-- Right side: image -->
+        <div style="flex: 1;">
+          <img id="movie-poster" src="" alt="Movie Poster"
+               style="width: 100%; height: auto; max-height: 250px; object-fit: contain; border-radius: 6px;">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- review modal -->
+  <div id="review-modal" class="modal-overlay" style="display: none;">
+    <div class="modal-content movie-card" style="width: 500px; margin: 100px auto; padding: 16px; background-color: rgb(143, 143, 143); border-radius: 8px; position: relative;">
+  
+      <!-- Close button -->
+      <span class="close-button" id="close-review-button" style="position: absolute; top: 10px; right: 14px; cursor: pointer; font-size: 24px;">&times;</span>
+  
+      <h2>Leave a Review</h2>
+  
+      <label for="review-text"><strong>Your Review:</strong></label><br>
+      <textarea id="review-text" rows="5" style="width: 100%; margin-bottom: 12px;"></textarea>
+  
+      <label><strong>Rating:</strong></label><br>
+      <div id="rating-buttons" style="margin: 10px;">
+        <button type="button" class="rating-btn" data-rating="1">⭐</button>
+        <button type="button" class="rating-btn" data-rating="2">⭐</button>
+        <button type="button" class="rating-btn" data-rating="3">⭐</button>
+        <button type="button" class="rating-btn" data-rating="4">⭐</button>
+        <button type="button" class="rating-btn" data-rating="5">⭐</button>
+      </div>
+      <button class="book-button" id="submit-review">Submit Review</button>
+    </div>
+  </div>
+  
+    <script type="module" src="../frontend/wishlist.js"></script>
+</body>
+</html>

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Panel - Raider MBS</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+    <body style="background-color: #2c2c2c; color: #f5f5f5;">
+
+    <h1>🎟️ Book Movie 🎟️</h1>
+
+    <!-- Navigation -->
+    <nav>
+      <a href="home.html">Home</a> |
+      <a href="admin.html">Admin</a> |
+      <a href="myBookings.html">My Bookings</a> |
+      <a href="wishlist.html">My Wishlist</a> |
+      <a href="login.html">Logout</a>
+    </nav>
+    <h2 style="text-align: center;">Admin Panel</h2>
+
+    <!-- Admin movie input form -->
+<!-- Trigger Button -->
+<div style="display: flex; flex-direction: column; align-items: center;">
+    <button id="open-form-btn-add-movie" class="book-button" style="width: 200px; margin-bottom: 10px;">Add Movie</button>
+    <button id="open-form-btn-remove-movie" class="book-button" style="width: 200px; margin-bottom: 10px;">Remove Movie</button>
+    <button id="open-form-btn-modify-movie" class="book-button" style="width: 200px;">Modify Movie</button>
+</div>
+
+
+
+
+<!-- Modal Form Add movie-->
+<div id="movie-form-modal-add-movie" class="modal-overlay" style="display: none;">
+    <div class="modal-content" style="width: 600px; display: flex; flex-direction: column; gap: 20px;">
+      
+      <!-- Close Button -->
+      <span id="close-form-btn-add-movie" class="close-button" style="position: absolute; top: 10px; right: 16px; cursor: pointer;">&times;</span>
+  
+      <!-- Title at the top -->
+      <h2 style="text-align: center;">Add Movie</h2>
+  
+      <!-- Flex container for the form -->
+      <div style="display: flex; gap: 20px; justify-content: space-between;">
+  
+        <!-- Left Side: Form Inputs -->
+        <form id="add-movie-form" class="form-left" style="display: flex; flex-direction: column; gap: 10px; flex: 1;">
+          <label for='movie-title' style="text-align: center;">Movie Title</label>
+          <input type="text" id="movie-title" placeholder="Movie Title" required>
+          <span style="color: pink; font-size: 12px; display: none; align-self:center;">Invalid movie title</span>
+
+          <label for="movie-description" style="text-align: center;">Description:</label>
+          <div id="description-container">
+            <textarea id="movie-description" placeholder="Description" required></textarea>
+          </div>
+          <span style="color: pink; font-size: 12px; display: none; align-self:center;">Invalid description</span>
+  
+          <label for="movie-image" style="text-align: center;">Image URL:</label>
+          <input type="text" id="movie-image" placeholder="Image URL" required>
+          <span style="color: pink; font-size: 12px; display: none; align-self:center;">Invalid image url</span>
+          
+          <label for='price' style="text-align: center;">Price</label>
+          <input type="number" id="price" placeholder="Price" required>
+
+          <label for='premiere-date' style="text-align: center;">Premiere Time</label>
+          <input type="date" id="premiere-date" required>
+
+          <button type="button" style="align-self: center;">Add Movie</button>
+          <span style="color: pink; font-size: 12px; display: none; align-self:center;">Invalid Username</span>
+
+        </form>
+  
+        <!-- Right Side: Image Preview -->
+        <div class="form-right" style="flex: 1; display: flex; justify-content: center; align-items: center;">
+            <img id="image-preview" src="" alt="Preview" style="max-width: 100%; height: auto; max-height: 250px; object-fit: contain;">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- remove movie  modal -->
+  <div id="movie-form-modal-remove-movie" class="modal-overlay" style="display: none;">
+    <div class="modal-content" style="width: 600px; display: flex; flex-direction: column; gap: 20px;">
+      
+      <!-- Close Button -->
+      <span id="close-form-btn-remove-movie" class="close-button" style="position: absolute; top: 10px; right: 16px; cursor: pointer;">&times;</span>
+  
+      <!-- Title at the top -->
+      <h2 style="text-align: center;">Remove Movie</h2>
+  
+      <!-- Flex container for the form -->
+      <div style="display: flex; gap: 20px; justify-content: space-between;">
+  
+        <!-- Left Side: Movie Details -->
+        <div class="form-left" style="display: flex; flex-direction: column; gap: 10px; flex: 1;">
+            <label for="movie-id" style="text-align: center;" >Movie ID</label>
+            <input type="number" id="movie-id" style="padding: 8px; border: 1px solid #ccc; border-radius: 6px;" placeholder="Enter Movie ID" min="0" required>
+  
+        <div>
+            <h3 id="movie-title" style="text-align: center; font-size: 20px;"></h3>  
+            <p id="movie-description" style="text-align: center; font-size: 16px;"></p>
+        </div>
+  
+          <!-- Remove Movie Button -->
+          <button type="button" id="remove-movie-btn" style="align-self: center; display: none;">Remove Movie</button>
+        </div>
+  
+        <!-- Right Side: Image Preview -->
+        <div class="form-right" style="flex: 1; display: flex; justify-content: center; align-items: center;">
+            <img id="movie-image-preview" src="" alt="Preview" style="max-width: 100%; height: auto; max-height: 250px; object-fit: contain;">
+        </div>
+      </div>
+    </div>
+</div>
+
+    <!-- Modal Form modify movie-->
+    <div id="movie-form-modal-modify-movie" class="modal-overlay" style="display: none;">
+        <div class="modal-content" style="width: 600px; display: flex; flex-direction: column; gap: 20px;">
+          
+          <!-- Close Button -->
+          <span id="close-form-btn-modify-movie" class="close-button" style="position: absolute; top: 10px; right: 16px; cursor: pointer;">&times;</span>
+      
+          <!-- Title at the top -->
+          <h2 style="text-align: center;">Modify Movie</h2>
+      
+          <!-- Flex container for the form -->
+          <div style="display: flex; gap: 20px; justify-content: space-between;">
+      
+            <!-- Left Side: Form Inputs -->
+            <form id="modify-movie-form" class="form-left" style="display: flex; flex-direction: column; gap: 10px; flex: 1;">
+
+              <label for='movie-id' style="text-align: center;">Movie Id</label>
+              <input type="number" id="movie-id" placeholder="Movie Id" min="0" required>
+
+              <label for='movie-title' id="movie-name" style="text-align: center;"></label>
+              <input type="text" id="movie-title" placeholder="Movie Title" style="display: none;" required>
+      
+              <label for="movie-description" id="movie-description-title" style="text-align: center;"></label>
+              <div id="description-container">
+                <textarea id="movie-description" placeholder="Description" style="display: none;" required></textarea>
+              </div>
+      
+              <label for="movie-image" id="movie-image-title" style="text-align: center;"></label>
+              <input type="text" id="movie-image" placeholder="Image URL" style="display: none;" required>
+
+              <label for='price' id="price_" style="text-align: center;"></label>
+              <input type="number" id="price" placeholder="Price" style="display: none;" required>
+    
+              <label for='premiere-date' id="premiere-date_" style="text-align: center;"></label>
+              <input type="date" id="premiere-date" style="display: none;" required>
+      
+              <button type="button" id="modify-movie-btn" style="align-self: center;">Modify Movie</button>
+            </form>
+      
+            <!-- Right Side: Image Preview -->
+            <div class="form-right" style="flex: 1; justify-content: center; align-items: center;">
+                <img id="movie-image-preview" src="" alt="Preview" style="max-width: 100%; height: auto; max-height: 250px; object-fit: contain;">
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <script type="module" src="../frontend/admin.js"></script>
+</body>
+</html>

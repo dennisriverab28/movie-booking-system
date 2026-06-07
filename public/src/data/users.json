@@ -1,0 +1,11 @@
+[
+  {
+    "username": "Admin",
+    "email": "ttu@gmail.com",
+    "password": "ttuedu",
+    "id": 1,
+    "tickets": [],
+    "wishlist": [],
+    "is_admin": false
+  }
+]

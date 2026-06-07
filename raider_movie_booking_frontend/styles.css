@@ -1,0 +1,158 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    background-color: #f5f5f5;
+}
+
+h1 {
+    color: crimson;
+    text-align: center;
+}
+
+nav {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+nav a {
+    margin: 0 10px;
+    text-decoration: none;
+    color: #333;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+h2, h3 {
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.movie-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.movie-card {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 10px;
+    width: 200px;
+    text-align: center;
+    background: #fff;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+}
+
+.movie-poster {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.book-button {
+    margin-top: 10px;
+    padding: 8px 12px;
+    background-color: crimson;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.movie-details {
+    max-width: 600px;
+    margin: auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.reviews-box {
+    max-height: 200px;
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    background: #fafafa;
+}
+
+/* ─── Seat‐grid ───────────────────────────────────────────────────────────────── */
+
+.seat-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 50px);
+  grid-gap: 10px;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.seat {
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  border: 1px solid #555;
+  border-radius: 4px;
+  user-select: none;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.seat-available {
+  background: #28a745;
+  color: white;
+}
+
+.seat-unavailable {
+  background: #ccc;
+  color: #666;
+  cursor: not-allowed;
+}
+
+.seat.selected {
+  box-shadow: inset 0 0 0 3px #ffc107;
+}
+
+/* Legend */
+
+.legend {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.9em;
+}
+.legend-color {
+  width: 16px;
+  height: 16px;
+  border: 1px solid #555;
+}
+.legend-color.available   { background: #28a745; }
+.legend-color.unavailable { background: #ccc; }
+.legend-color.selected    { background: #ffc107; }
+
+.rating-btn {
+  font-size: 32px;
+  background: none;
+  background-color: black;
+  border: none;
+  cursor: pointer;
+  color: #bbb; /* gray by default */
+  transition: color 0.2s;
+}
+
+.rating-btn.selected {
+  color: gold; /* turns gold when selected */
+}

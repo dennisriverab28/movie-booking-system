@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Raider Movie Booking System</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Your CSS file -->
+</head>
+<body>
+    <body style="background-color: #2c2c2c; color: #f5f5f5;">
+
+    <!-- Welcome message shown after login -->
+    <!--<p id="welcome-message" style="font-weight: bold; margin-top: 10px;"></p>-->
+
+    <!-- Logout button -->
+
+    <!-- Title of the site -->
+    <h1>🎬 Raider Movie Booking 🎟️</h1>
+    <!-- Navigation bar with all the pages -->
+    <nav>
+        <a href="home.html">Home</a> |
+        <a href="admin.html">Admin</a> |
+        <a href="myBookings.html">My Bookings</a> |
+        <a href="wishlist.html">My Wishlist</a> |
+        <a href="login.html">Logout</a>
+      </nav>
+
+
+    <!-- My Bookings section title -->
+    <h2 style="text-align: center;">My Bookings</h2>
+
+    <!-- Container where past and current bookings will be loaded using [script.js?] -->
+    <div id="bookings-list" class="movie-list">
+        <!-- Booking cards appear here -->
+
+        <!-- Bookings Card, keep the class name for styling -->
+        <div class="movie-card" style="display: none;">
+            <h3 style="font-size: 1.5em; font-weight: bold;" id="ticket-id">ticket-id-123-321-000-111</h3>
+            <p style="font-size: 1.5em; font-weight: bold;" id="movie-title">Great Title</p>
+            <p style="font-size: 1.3em; font-weight: bold;" id="seat">A1</p>
+            <p style="font-size: 1.1em; font-weight: bold;" id="movie-date-time">1984-01-01 19:84</p>
+            <button class="book-button" id="cancel">Cancel Book</button>
+        </div> 
+    </div>
+
+    <!-- Modal Backdrop -->
+    <div id="bookings-modal" class="modal-overlay" style="display:none;">
+        <div class="modal-content movie-card" style="width: 275px;max-width:400px; margin:auto auto; text-align:center;">
+            <!-- Close button -->
+            <span class="close-button" id="close-button" style="float:right; cursor:pointer;">&times;</span>
+
+            <!-- Additional Ticket Details -->
+            <h2 id="ticket-id"></h2>
+            <h3 id="movie-title"></h3>
+            <p id="movie-description"></p>
+            <p id="movie-date-time"></p>
+
+            <button class="book-button" id="ticket-cancel">Cancel</button>
+        </div>
+    </div>
+
+    <script type="module" src="../frontend/myBookings.js"></script>
+</body>
+</html>
