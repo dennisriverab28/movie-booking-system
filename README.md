@@ -1,122 +1,87 @@
-# Movie Booking System
+<p align="center">
+  <img src="docs/banner.svg" alt="Movie Booking System" width="100%">
+</p>
 
-**Stack:** Node.js · Express.js · Vanilla JS · HTML/CSS  
-**Type:** Full-Stack Web Application
+<p align="center">
+  <img src="https://img.shields.io/badge/Node.js-5FA04E?logo=nodedotjs&logoColor=white" alt="Node.js">
+  <img src="https://img.shields.io/badge/Express_5-000000?logo=express&logoColor=white" alt="Express">
+  <img src="https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black" alt="JavaScript">
+  <img src="https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white" alt="HTML5">
+  <img src="https://img.shields.io/badge/status-complete-22c55e" alt="Status">
+</p>
 
----
-
-## Overview
-
-A full-stack movie booking web application with user authentication, a movie catalog, seat booking, a personal wishlist, reviews/ratings, and an admin panel — all backed by a Node.js/Express REST API with JSON-file persistence.
-
----
-
-## Features
-
-| Feature | Description |
-|---------|-------------|
-| **User Auth** | Sign up, login, session-based access |
-| **Movie Catalog** | Browse all available movies with details |
-| **Ticket Booking** | Book movie tickets, view/cancel bookings |
-| **Wishlist** | Add/remove movies from personal wishlist |
-| **Reviews & Ratings** | Submit reviews and star ratings per movie |
-| **Admin Panel** | Add, edit, and remove movies from catalog |
-| **REST API** | Express backend with JSON endpoints |
-| **JSON Persistence** | User and movie data stored in `src/data/*.json` |
+<p align="center">
+  A full-stack movie-ticketing web app — user auth, a browsable catalog, ticket booking,
+  a personal wishlist, reviews & ratings, and an admin panel — all backed by a<br>
+  Node.js / Express REST API with JSON-file persistence.
+</p>
 
 ---
 
-## Project Structure
+## ✨ What it does
 
-```
-Movie_Booking_System/
-├── server.js                        # Express server + all API routes
-├── package.json
-├── .env.example                     # Copy to .env and set PORT
-│
-├── public/
-│   ├── index.html                   # App entry point
-│   ├── index.js                     # Entry JS
-│   ├── src/
-│   │   ├── backend/
-│   │   │   ├── movies.js            # Movie CRUD logic
-│   │   │   └── users.js             # User/ticket/wishlist logic
-│   │   ├── frontend/
-│   │   │   ├── home.js              # Home page controller
-│   │   │   ├── login.js             # Login logic
-│   │   │   ├── signup.js            # Registration logic
-│   │   │   ├── bookMovie.js         # Booking flow
-│   │   │   ├── myBookings.js        # View/cancel bookings
-│   │   │   ├── wishlist.js          # Wishlist management
-│   │   │   └── admin.js             # Admin panel logic
-│   │   ├── ui/
-│   │   │   ├── home.html            # Home page
-│   │   │   ├── login.html           # Login page
-│   │   │   ├── signup.html          # Registration page
-│   │   │   ├── bookMovie.html       # Booking page
-│   │   │   ├── myBookings.html      # My bookings page
-│   │   │   ├── wishlist.html        # Wishlist page
-│   │   │   ├── admin.html           # Admin page
-│   │   │   ├── styles.css           # Main stylesheet
-│   │   │   ├── booking.css          # Booking page styles
-│   │   │   └── admin.css            # Admin panel styles
-│   │   ├── data/
-│   │   │   ├── movies.json          # Movie catalog (persistent storage)
-│   │   │   └── users.json           # User accounts + bookings + wishlist
-│   │   ├── client_request.js        # Fetch API wrapper
-│   │   └── local_data.js            # Client-side data utilities
-│
-└── raider_movie_booking_frontend/   # Alternate frontend version
+- 🔐 **User auth** — sign up, log in, and session-scoped access to bookings and wishlist.
+- 🎞️ **Movie catalog** — browse all available movies with details.
+- 🎟️ **Ticket booking** — book tickets and view or cancel your bookings.
+- ❤️ **Wishlist** — add and remove movies from a personal list.
+- ⭐ **Reviews & ratings** — submit a review and a star rating per movie.
+- 🛠️ **Admin panel** — add, edit, and remove movies from the catalog.
+- 🗃️ **JSON persistence** — users and movies are stored in `public/src/data/*.json`.
+
+## 🏗 Architecture
+
+```mermaid
+flowchart LR
+    UI[Browser · HTML/CSS/JS] -->|fetch · REST| API[Express server.js]
+    API --> USERS[users.js<br/>auth · bookings · wishlist]
+    API --> MOVIES[movies.js<br/>catalog · reviews · admin]
+    USERS --> DB[(users.json)]
+    MOVIES --> DBM[(movies.json)]
+    API -. serves static .-> UI
 ```
 
----
-
-## API Endpoints
+## 🔌 API endpoints
 
 | Method | Route | Description |
-|--------|-------|-------------|
-| GET | `/users` | Get all users |
-| POST | `/new_user` | Register a new user |
-| POST | `/login` | Authenticate user |
-| GET | `/movies` | Get all movies |
-| POST | `/add_movie` | Add a movie (admin) |
-| POST | `/remove_movie` | Remove a movie (admin) |
-| POST | `/modify_movie` | Edit a movie (admin) |
-| POST | `/book_movie` | Book a ticket |
-| POST | `/cancel_movie` | Cancel a booking |
-| POST | `/addToWishList` | Add movie to wishlist |
-| POST | `/removeFromWishList` | Remove from wishlist |
-| POST | `/submit_review` | Submit a movie review |
+| ------ | ----- | ----------- |
+| `GET` | `/users` | List all users |
+| `POST` | `/new_user` | Register a new user |
+| `POST` | `/login` | Authenticate a user |
+| `GET` | `/movies` | List all movies |
+| `POST` | `/add_movie` · `/modify_movie` · `/remove_movie` | Catalog admin |
+| `POST` | `/book_movie` · `/cancel_movie` | Book / cancel a ticket |
+| `POST` | `/addToWishList` · `/removeFromWishList` | Wishlist management |
+| `POST` | `/submit_review` | Submit a review / rating |
 
----
+## 🗂 Project structure
 
-## Setup & Run
+```text
+├── server.js                # Express server + all API routes
+├── package.json
+├── .env.example             # copy → .env and set PORT
+└── public/
+    ├── index.html           # entry point
+    └── src/
+        ├── backend/         # users.js, movies.js (data logic)
+        ├── frontend/        # per-page controllers (login, bookMovie, admin, …)
+        ├── ui/              # page HTML + stylesheets
+        └── data/            # movies.json, users.json (persistent store)
+```
 
-### 1. Install dependencies
+## 🚀 Quickstart
+
 ```bash
 npm install
-```
-
-### 2. Configure environment
-```bash
-cp .env.example .env
-# Edit .env and set your desired PORT (e.g., PORT=3000)
-```
-
-### 3. Start the server
-```bash
+cp .env.example .env     # set PORT (defaults to 3000 in the example)
 node server.js
+# open http://localhost:3000
 ```
 
-### 4. Open in browser
-```
-http://localhost:3000
-```
+## 🧰 Stack
 
----
-
-## Notes
-
-- Data is persisted in `public/src/data/movies.json` and `users.json` — no database required.
-- The `other/` and `raider_movie_booking_frontend/` folders contain earlier frontend iterations.
-- Passwords are stored in plaintext in the JSON data file — this is a course project, not production code.
+| Layer | Tech |
+| ----- | ---- |
+| Backend | Node.js, Express 5, dotenv |
+| Frontend | Vanilla JavaScript, HTML5, CSS |
+| Data | JSON-file persistence (`public/src/data`) |
+| API | REST over `fetch` |
